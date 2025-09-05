@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f0f2f5; color: #333; }
+    h2 { color: #1877f2; }
+    .countdown { font-size: 2em; color: #d93025; margin: 20px 0; }
+    .progress-container { width: 100%; max-width: 400px; background-color: #ddd; border-radius: 20px; margin: 20px auto; overflow: hidden; }
+    .progress-bar { height: 20px; width: 0%; background-color: #1877f2; text-align: center; color: #fff; line-height: 20px; border-radius: 20px 0 0 20px; transition: width 0.1s linear; }
+    a.button { display: inline-block; padding: 10px 20px; margin: 10px 0; background-color: #1877f2; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; }
+    a.button:hover { background-color: #0f5bb5; }
+    hr { margin: 40px 0; }
+  </style>
+</head>
+<body>
+  <h2>আপনাকে ফেসবুক পেজ দেখানো হচ্ছে...</h2>
+  <p>ফেসবুক পেজ লোডের পরে আপনি <span class="countdown" id="countdown">3</span> সেকেন্ডের মধ্যে এডভারটিকা লিংকে পাঠানো হবে।</p>
+  
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  
+  <a class="button" href="https://www.facebook.com/profile.php?id=61559743622654" target="_blank">ফেসবুক পেজে যান</a>
+  
+  <script>
+    let countdown = 3;
+    const countdownElement = document.getElementById('countdown');
+    const progressBar = document.getElementById('progress-bar');
+    const totalTime = countdown * 1000;
+    let startTime = Date.now();
+
+    const interval = setInterval(() => {
+      let elapsed = Date.now() - startTime;
+      let remaining = countdown - Math.floor(elapsed / 1000);
+      countdownElement.textContent = remaining >= 0 ? remaining : 0;
+
+      let progress = Math.min((elapsed / totalTime) * 100, 100);
+      progressBar.style.width = progress + '%';
+
+      if (elapsed >= totalTime) {
+        clearInterval(interval);
+        // ফেসবুকের পরে স্বয়ংক্রিয়ভাবে এডভারটিকা লিংকে রিডাইরেক্ট
+        window.location.href = 'https://data284.click/969351ec60729931ab57/bf8e97dde7/?placementName=default';
+      }
+    }, 100);
+  </script>
+</body>
+</html>
